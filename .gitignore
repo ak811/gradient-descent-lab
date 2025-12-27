@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual envs
+.venv/
+venv/
+ENV/
+
+# Tools
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Notebooks (we removed notebooks/ but just in case)
+.ipynb_checkpoints/
+
+# Build
+dist/
+build/
+*.egg-info/
