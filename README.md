@@ -38,7 +38,7 @@ python scripts/make_all.py
 
 ### Where figures are saved
 
-figures are saved to **`figures/`** (capital F) via `src/gdlab/config.py`:
+Figures are saved to **`figures/`** via `src/gdlab/config.py`:
 
 ```python
 figures_DIR = PROJECT_ROOT / "figures"
@@ -52,14 +52,18 @@ The image links below assume figures live in **`figures/`**.
 
 ### Gradient Descent (GD)
 
-For a differentiable objective $f:\mathbb{R}^d\to\mathbb{R}$, GD iterates as:
+For a differentiable objective \( f:\mathbb{R}^d\to\mathbb{R} \), GD iterates as:
+
 $$
 x_{k+1} = x_k - \alpha_k \nabla f(x_k).
 $$
 
 **Optimality gap** (used in many plots):
+
 $$
-\mathrm{gap}_k := f(x_k) - f^\star,\qquad f^\star = \min_x f(x).
+\mathrm{gap}_k := f(x_k) - f^\star,
+\qquad
+f^\star = \min_x f(x).
 $$
 
 ---
@@ -68,7 +72,8 @@ $$
 
 ### Definition
 
-For parameter $\beta \in \mathbb{R}$,
+For parameter \( \beta \in \mathbb{R} \),
+
 $$
 f(x,y) = x^2 + y^2 + \beta xy + x + 2y.
 $$
@@ -91,20 +96,24 @@ $$
 
 ### Minimizer
 
-The minimizer satisfies $\nabla f(x^\star)=0$, equivalently:
+The minimizer satisfies \( \nabla f(x^\star)=0 \), equivalently:
+
 $$
 \nabla^2 f\,x^\star + \begin{pmatrix}1\\2\end{pmatrix}=0
 \quad\Rightarrow\quad
 x^\star = -(\nabla^2 f)^{-1}\begin{pmatrix}1\\2\end{pmatrix}.
 $$
 
-### Smoothness constant $L$ and theorem step size
+### Smoothness constant \(L\) and theorem step size
 
-For this quadratic, $\nabla f$ is $L$-Lipschitz with
+For this quadratic, \( \nabla f \) is \(L\)-Lipschitz with
+
 $$
 L = \lambda_{\max}(\nabla^2 f).
 $$
+
 A standard safe fixed step size is
+
 $$
 \alpha = \frac{1}{L}.
 $$
@@ -116,7 +125,7 @@ $$
 ### Definition
 
 $$
-f(x) = \left(x^2 + x(1+\sin x) + 2\right)\exp\left(-\frac{|x|}{3}\right).
+f(x) = \left(x^2 + x(1+\sin x) + 2\right)\exp\left(-\frac{\lvert x\rvert}{3}\right).
 $$
 
 This objective has multiple local minima, so local optimizers can converge to different solutions depending on initialization.
@@ -127,9 +136,10 @@ This objective has multiple local minima, so local optimizers can converge to di
 
 ### Definition
 
-Given $A \in \mathbb{R}^{m\times n}$, $y\in\mathbb{R}^m$,
+Given \(A \in \mathbb{R}^{m\times n}\), \(y\in\mathbb{R}^m\),
+
 $$
-f(x) = \frac{1}{m}\|Ax-y\|_2^2.
+f(x) = \frac{1}{m}\lVert Ax-y\rVert_2^2.
 $$
 
 ### Gradient and Hessian
@@ -140,33 +150,43 @@ $$
 \nabla^2 f(x) = \frac{2}{m}A^\top A.
 $$
 
-### Smoothness $L$ and strong convexity $\mu$
+### Smoothness \(L\) and strong convexity \(\mu\)
 
 $$
-L = \lambda_{\max}\!\left(\frac{2}{m}A^\top A\right),\quad
+L = \lambda_{\max}\!\left(\frac{2}{m}A^\top A\right),
+\qquad
 \mu = \lambda_{\min}\!\left(\frac{2}{m}A^\top A\right).
 $$
 
 ### Exact line search (least squares)
 
-Along steepest descent direction $d_k=-\nabla f(x_k)$,
+Along steepest descent direction \(d_k=-\nabla f(x_k)\),
+
 $$
 \alpha_k = \arg\min_{\alpha\ge 0} f(x_k+\alpha d_k).
 $$
+
 For least squares (quadratic), this has a closed form:
+
 $$
-\alpha_k = \frac{\|\nabla f(x_k)\|_2^2}{\nabla f(x_k)^\top \nabla^2 f \,\nabla f(x_k)},
+\alpha_k
+= \frac{\lVert \nabla f(x_k)\rVert_2^2}{\nabla f(x_k)^\top \nabla^2 f \,\nabla f(x_k)},
 \qquad
 \nabla^2 f=\frac{2}{m}A^\top A.
 $$
 
 ### Backtracking Armijo line search
 
-Starting from $\alpha_0$, shrink $\alpha \leftarrow \beta\alpha$ until:
+Starting from \(\alpha_0\), shrink \(\alpha \leftarrow \beta\alpha\) until:
+
 $$
-f(x_k + \alpha d_k) \le f(x_k) + c_1\alpha \nabla f(x_k)^\top d_k,
-\quad d_k=-\nabla f(x_k),
-\quad 0<c_1<1,\; 0<\beta<1.
+f(x_k + \alpha d_k)
+\le
+f(x_k) + c_1\alpha \nabla f(x_k)^\top d_k,
+\qquad
+d_k=-\nabla f(x_k),
+\qquad
+0<c_1<1,\; 0<\beta<1.
 $$
 
 ---
@@ -190,22 +210,22 @@ $$
   <img src="figures/quadratic_traj_xempty.png" alt="Single-point trajectory" width="380" />
 </p>
 
-4. **Gradient Descent trajectory ($\alpha = 0.5$)**  
+4. **Gradient Descent trajectory (α = 0.5)**  
 <p align="center">
   <img src="figures/gd_traj_alpha_0p5.png" alt="GD trajectory alpha=0.5" width="380" />
 </p>
 
-5. **Gradient Descent trajectory ($\alpha = 1.0$)**  
+5. **Gradient Descent trajectory (α = 1.0)**  
 <p align="center">
   <img src="figures/gd_traj_alpha_1p0.png" alt="GD trajectory alpha=1.0" width="380" />
 </p>
 
-6. **Gradient Descent trajectory ($\alpha = 1/L$)**  
+6. **Gradient Descent trajectory (α = 1/L)**  
 <p align="center">
   <img src="figures/gd_traj_alpha_theorem.png" alt="GD trajectory theorem alpha" width="380" />
 </p>
 
-7. **Optimality gap ($\alpha = 0.5$ vs $\alpha = 1/L$)**  
+7. **Optimality gap (α = 0.5 vs α = 1/L)**  
 <p align="center">
   <img src="figures/gap_quadratic_b_vs_d.png" alt="Optimality gaps b vs d" width="380" />
 </p>
