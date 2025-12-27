@@ -1,4 +1,4 @@
-# Gradient Descent Lab
+# Gradient Descent Lab (Scientific Project Repo)
 
 This repository is an implementation of gradient-based optimization methods across three classic problem families:
 
@@ -6,7 +6,7 @@ This repository is an implementation of gradient-based optimization methods acro
 - **1D nonconvex** objective (multi-start behavior and local minima)  
 - **Least-squares linear regression** (Diabetes dataset)
 
-It includes:
+Implemented methods:
 
 - fixed-step **Gradient Descent**
 - theorem-based stepsize choice via smoothness constant (**1/L**)
@@ -18,8 +18,6 @@ It includes:
 
 ## Install
 
-Create and activate a virtual environment, then install dependencies:
-
 ```bash
 python -m venv .venv
 source .venv/bin/activate
@@ -29,8 +27,6 @@ pip install -r requirements.txt
 ---
 
 ## Reproduce all figures
-
-Run the full pipeline:
 
 ```bash
 python scripts/make_all.py
@@ -42,81 +38,72 @@ All plots are saved into:
 
 ---
 
-## Results Gallery (from `figures/`)
+## Results Gallery (15 figures)
 
 ### Quadratic (2D)
 
+1. **Objective surface**  
 ![Quadratic surface](figures/quadratic_surface.png)
 
+2. **Objective contours**  
 ![Quadratic contours](figures/quadratic_contours.png)
 
+3. **Contour plot with a single reference point**  
+![Single-point trajectory](figures/quadratic_traj_xempty.png)
+
+4. **Gradient Descent trajectory (α = 0.5)**  
 ![GD trajectory alpha=0.5](figures/gd_traj_alpha_0p5.png)
 
+5. **Gradient Descent trajectory (α = 1.0)**  
 ![GD trajectory alpha=1.0](figures/gd_traj_alpha_1p0.png)
 
+6. **Gradient Descent trajectory (α = 1/L)**  
 ![GD trajectory theorem alpha](figures/gd_traj_alpha_theorem.png)
 
+7. **Optimality gap (α = 0.5 vs α = 1/L)**  
 ![Optimality gaps b vs d](figures/gap_quadratic_b_vs_d.png)
 
+8. **SciPy solver iterates on contour plot**  
+![SciPy iterates contour](figures/scipy_iterates_contour.png)
+
+9. **Optimality gaps: SciPy vs GD**  
 ![SciPy vs GD gaps](figures/scipy_vs_gd_gaps.png)
 
 ### Nonconvex (1D)
 
-![Histogram of minimizers](figures/nonconvex_hist_minimizers.png)
+10. **Multi-start histogram summary (minimizers and objective values)**  
+![Nonconvex histograms](figures/nonconvex_histograms.png)
 
-![Histogram of objective values](figures/nonconvex_hist_objvals.png)
+11. **Objective function with detected local minima**  
+![Nonconvex function minima](figures/nonconvex_function_minima.png)
 
 ### Least Squares (Diabetes dataset)
 
+12. **Fixed-stepsize GD: optimality gaps**  
 ![Fixed-stepsize GD gaps](figures/diabetes_gd_gaps.png)
 
-![Fixed vs exact vs backtracking](figures/diabetes_exact_vs_fixed_vs_bt.png)
+13. **Fixed steps vs Exact line search**  
+![Fixed vs exact](figures/diabetes_fixed_vs_exact.png)
 
+14. **Fixed steps vs Exact line search vs Backtracking**  
+![Fixed vs exact vs backtracking](figures/diabetes_fixed_vs_exact_vs_bt.png)
+
+15. **Stepsizes over iterations (Exact vs Backtracking)**  
 ![Stepsizes exact vs backtracking](figures/stepsizes_exact_vs_bt.png)
-
----
-
-### Key modules
-
-- `src/gdlab/objectives/`
-  - `quadratic2d.py`: quadratic objective, gradient, Hessian, closed-form minimizer
-  - `nonconvex1d.py`: nonconvex objective used for multi-start experiments
-  - `least_squares.py`: Diabetes dataset + least squares objective/gradient and (L, μ)
-
-- `src/gdlab/optim/`
-  - `gd.py`: fixed-step gradient descent
-  - `exact_line_search.py`: exact stepsize for least squares
-  - `backtracking.py`: Armijo backtracking GD
-
-- `src/gdlab/plotting/`
-  - `contours.py`: contour + trajectory plots
-  - `lines.py`: semilog gap plots, step-size plots
-  - `hist.py`: histograms
-
----
-
-## Reproducibility notes
-
-- Randomness is seeded in nonconvex experiments.
-- Scripts create `figures/` if it does not exist.
-- figures are saved with stable filenames used by this README.
-- The codebase is split into small modules (each < 100 lines) by design.
 
 ---
 
 ## Tests
 
-Run the test suite:
-
 ```bash
 pytest -q
 ```
 
-Tests include:
+The test suite includes:
 - finite-difference gradient checks for the quadratic
-- basic descent/convergence sanity checks
+- descent sanity checks
 - Armijo condition verification for backtracking
-- decrease guarantee check for exact line search on least squares
+- decrease check for exact line search on least squares
 
 ---
 
