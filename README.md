@@ -1,4 +1,4 @@
-# Gradient Descent Lab (Scientific Project Repo)
+# Gradient Descent Lab
 
 This repository is an implementation of gradient-based optimization methods across three classic problem families:
 
@@ -38,10 +38,7 @@ All plots are saved into:
 
 ---
 
-## Results Gallery (15 figures)
-
-> **Note:** GitHub Markdown does not support consistent image sizing with `![...](...)`.  
-> The images below use HTML `<img>` tags so every figure is displayed at the same width.
+## Results
 
 ### Quadratic (2D)
 
