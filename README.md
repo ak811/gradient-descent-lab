@@ -38,55 +38,43 @@ python scripts/make_all.py
 
 All plots are saved into:
 
-- `Figures/`
+- `figures/`
 
 ---
 
-## Results Gallery (from `Figures/`)
+## Results Gallery (from `figures/`)
 
 ### Quadratic (2D)
 
-![Quadratic surface](Figures/quadratic_surface.png)
+![Quadratic surface](figures/quadratic_surface.png)
 
-![Quadratic contours](Figures/quadratic_contours.png)
+![Quadratic contours](figures/quadratic_contours.png)
 
-![GD trajectory alpha=0.5](Figures/gd_traj_alpha_0p5.png)
+![GD trajectory alpha=0.5](figures/gd_traj_alpha_0p5.png)
 
-![GD trajectory alpha=1.0](Figures/gd_traj_alpha_1p0.png)
+![GD trajectory alpha=1.0](figures/gd_traj_alpha_1p0.png)
 
-![GD trajectory theorem alpha](Figures/gd_traj_alpha_theorem.png)
+![GD trajectory theorem alpha](figures/gd_traj_alpha_theorem.png)
 
-![Optimality gaps b vs d](Figures/gap_quadratic_b_vs_d.png)
+![Optimality gaps b vs d](figures/gap_quadratic_b_vs_d.png)
 
-![SciPy vs GD gaps](Figures/scipy_vs_gd_gaps.png)
+![SciPy vs GD gaps](figures/scipy_vs_gd_gaps.png)
 
 ### Nonconvex (1D)
 
-![Histogram of minimizers](Figures/nonconvex_hist_minimizers.png)
+![Histogram of minimizers](figures/nonconvex_hist_minimizers.png)
 
-![Histogram of objective values](Figures/nonconvex_hist_objvals.png)
+![Histogram of objective values](figures/nonconvex_hist_objvals.png)
 
 ### Least Squares (Diabetes dataset)
 
-![Fixed-stepsize GD gaps](Figures/diabetes_gd_gaps.png)
+![Fixed-stepsize GD gaps](figures/diabetes_gd_gaps.png)
 
-![Fixed vs exact vs backtracking](Figures/diabetes_exact_vs_fixed_vs_bt.png)
+![Fixed vs exact vs backtracking](figures/diabetes_exact_vs_fixed_vs_bt.png)
 
-![Stepsizes exact vs backtracking](Figures/stepsizes_exact_vs_bt.png)
+![Stepsizes exact vs backtracking](figures/stepsizes_exact_vs_bt.png)
 
 ---
-
-## Project layout
-
-```text
-gradient-descent-lab/
-├─ README.md
-├─ requirements.txt
-├─ Figures/                  # all saved plots used by README
-├─ src/gdlab/                # reusable library code (objectives, optimizers, plotting utils)
-├─ scripts/                  # reproducible figure-generation scripts
-└─ tests/                    # quick correctness + sanity tests
-```
 
 ### Key modules
 
@@ -110,8 +98,8 @@ gradient-descent-lab/
 ## Reproducibility notes
 
 - Randomness is seeded in nonconvex experiments.
-- Scripts create `Figures/` if it does not exist.
-- Figures are saved with stable filenames used by this README.
+- Scripts create `figures/` if it does not exist.
+- figures are saved with stable filenames used by this README.
 - The codebase is split into small modules (each < 100 lines) by design.
 
 ---
