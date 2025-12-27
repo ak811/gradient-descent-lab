@@ -40,56 +40,89 @@ All plots are saved into:
 
 ## Results Gallery (15 figures)
 
+> **Note:** GitHub Markdown does not support consistent image sizing with `![...](...)`.  
+> The images below use HTML `<img>` tags so every figure is displayed at the same width.
+
 ### Quadratic (2D)
 
 1. **Objective surface**  
-![Quadratic surface](figures/quadratic_surface.png)
+<p align="center">
+  <img src="figures/quadratic_surface.png" alt="Quadratic surface" width="700" />
+</p>
 
 2. **Objective contours**  
-![Quadratic contours](figures/quadratic_contours.png)
+<p align="center">
+  <img src="figures/quadratic_contours.png" alt="Quadratic contours" width="700" />
+</p>
 
 3. **Contour plot with a single reference point**  
-![Single-point trajectory](figures/quadratic_traj_xempty.png)
+<p align="center">
+  <img src="figures/quadratic_traj_xempty.png" alt="Single-point trajectory" width="700" />
+</p>
 
 4. **Gradient Descent trajectory (α = 0.5)**  
-![GD trajectory alpha=0.5](figures/gd_traj_alpha_0p5.png)
+<p align="center">
+  <img src="figures/gd_traj_alpha_0p5.png" alt="GD trajectory alpha=0.5" width="700" />
+</p>
 
 5. **Gradient Descent trajectory (α = 1.0)**  
-![GD trajectory alpha=1.0](figures/gd_traj_alpha_1p0.png)
+<p align="center">
+  <img src="figures/gd_traj_alpha_1p0.png" alt="GD trajectory alpha=1.0" width="700" />
+</p>
 
 6. **Gradient Descent trajectory (α = 1/L)**  
-![GD trajectory theorem alpha](figures/gd_traj_alpha_theorem.png)
+<p align="center">
+  <img src="figures/gd_traj_alpha_theorem.png" alt="GD trajectory theorem alpha" width="700" />
+</p>
 
 7. **Optimality gap (α = 0.5 vs α = 1/L)**  
-![Optimality gaps b vs d](figures/gap_quadratic_b_vs_d.png)
+<p align="center">
+  <img src="figures/gap_quadratic_b_vs_d.png" alt="Optimality gaps b vs d" width="700" />
+</p>
 
 8. **SciPy solver iterates on contour plot**  
-![SciPy iterates contour](figures/scipy_iterates_contour.png)
+<p align="center">
+  <img src="figures/scipy_iterates_contour.png" alt="SciPy iterates contour" width="700" />
+</p>
 
 9. **Optimality gaps: SciPy vs GD**  
-![SciPy vs GD gaps](figures/scipy_vs_gd_gaps.png)
+<p align="center">
+  <img src="figures/scipy_vs_gd_gaps.png" alt="SciPy vs GD gaps" width="700" />
+</p>
 
 ### Nonconvex (1D)
 
 10. **Multi-start histogram summary (minimizers and objective values)**  
-![Nonconvex histograms](figures/nonconvex_histograms.png)
+<p align="center">
+  <img src="figures/nonconvex_histograms.png" alt="Nonconvex histograms" width="700" />
+</p>
 
 11. **Objective function with detected local minima**  
-![Nonconvex function minima](figures/nonconvex_function_minima.png)
+<p align="center">
+  <img src="figures/nonconvex_function_minima.png" alt="Nonconvex function minima" width="700" />
+</p>
 
 ### Least Squares (Diabetes dataset)
 
 12. **Fixed-stepsize GD: optimality gaps**  
-![Fixed-stepsize GD gaps](figures/diabetes_gd_gaps.png)
+<p align="center">
+  <img src="figures/diabetes_gd_gaps.png" alt="Fixed-stepsize GD gaps" width="700" />
+</p>
 
 13. **Fixed steps vs Exact line search**  
-![Fixed vs exact](figures/diabetes_fixed_vs_exact.png)
+<p align="center">
+  <img src="figures/diabetes_fixed_vs_exact.png" alt="Fixed vs exact" width="700" />
+</p>
 
 14. **Fixed steps vs Exact line search vs Backtracking**  
-![Fixed vs exact vs backtracking](figures/diabetes_fixed_vs_exact_vs_bt.png)
+<p align="center">
+  <img src="figures/diabetes_fixed_vs_exact_vs_bt.png" alt="Fixed vs exact vs backtracking" width="700" />
+</p>
 
 15. **Stepsizes over iterations (Exact vs Backtracking)**  
-![Stepsizes exact vs backtracking](figures/stepsizes_exact_vs_bt.png)
+<p align="center">
+  <img src="figures/stepsizes_exact_vs_bt.png" alt="Stepsizes exact vs backtracking" width="700" />
+</p>
 
 ---
 
