@@ -1,4 +1,4 @@
-# Gradient Descent Lab
+# Gradient Descent Lab: Methods and Empirical Behavior
 
 This repository is an implementation of gradient-based optimization methods across three classic problem families:
 
@@ -8,7 +8,7 @@ This repository is an implementation of gradient-based optimization methods acro
 
 Implemented methods:
 
-- fixed-step **Gradient Descent**
+- fixed-step **Gradient Descent (GD)**
 - theorem-based stepsize choice via smoothness constant (**1/L**)
 - **SciPy** baseline solver (**BFGS**)
 - **Exact line search** for least squares
@@ -20,7 +20,11 @@ Implemented methods:
 
 ```bash
 python -m venv .venv
+# Linux/Mac
 source .venv/bin/activate
+# Windows (PowerShell)
+.venv\Scripts\Activate.ps1
+
 pip install -r requirements.txt
 ```
 
@@ -32,13 +36,137 @@ pip install -r requirements.txt
 python scripts/make_all.py
 ```
 
-All plots are saved into:
+### Where figures are saved (important, because humans love mismatched folder names)
 
-- `figures/`
+The project code currently saves figures to **`Figures/`** (capital F) via `src/gdlab/config.py`:
+
+```python
+FIGURES_DIR = PROJECT_ROOT / "Figures"
+```
+
+But the image placeholders below point to **`figures/`** (lowercase), because that’s what you asked for and what GitHub READMEs often use.
+
+If your images aren’t showing up, you have two easy options:
+1. Change `FIGURES_DIR` to `PROJECT_ROOT / "figures"` (and re-run scripts), or  
+2. Rename/move `Figures/` → `figures/` after generation.
+
+---
+
+## Main math formulas
+
+### Gradient Descent (GD)
+For a differentiable objective \(f:\mathbb{R}^d\to\mathbb{R}\), GD iterates as:
+\[
+x_{k+1} = x_k - \alpha_k \nabla f(x_k).
+\]
+
+**Optimality gap** (used in many plots):
+\[
+\mathrm{gap}_k := f(x_k) - f^\star,\quad f^\star = \min_x f(x).
+\]
+
+---
+
+## Objective 1: 2D quadratic
+
+### Definition
+For parameter \(\beta \in \mathbb{R}\),
+\[
+f(x,y) = x^2 + y^2 + \beta xy + x + 2y.
+\]
+
+### Gradient and Hessian
+\[
+\nabla f(x,y)=
+\begin{pmatrix}
+2x + \beta y + 1\\
+2y + \beta x + 2
+\end{pmatrix},
+\qquad
+\nabla^2 f =
+\begin{pmatrix}
+2 & \beta\\
+\beta & 2
+\end{pmatrix}.
+\]
+
+### Minimizer
+The minimizer satisfies \(\nabla f(x^\star)=0\), equivalently:
+\[
+\nabla^2 f\,x^\star + \begin{pmatrix}1\\2\end{pmatrix}=0
+\quad\Rightarrow\quad
+x^\star = -(\nabla^2 f)^{-1}\begin{pmatrix}1\\2\end{pmatrix}.
+\]
+
+### Smoothness constant \(L\) and theorem step size
+For this quadratic, \(\nabla f\) is \(L\)-Lipschitz with
+\[
+L = \lambda_{\max}(\nabla^2 f).
+\]
+A standard safe fixed step size is
+\[
+\alpha = \frac{1}{L}.
+\]
+
+---
+
+## Objective 2: 1D nonconvex
+
+### Definition
+\[
+f(x) = \left(x^2 + x(1+\sin x) + 2\right)\exp\left(-\frac{|x|}{3}\right).
+\]
+
+This objective has multiple local minima, so local optimizers can converge to different solutions depending on initialization.
+
+---
+
+## Objective 3: least squares (Diabetes dataset)
+
+### Definition
+Given \(A \in \mathbb{R}^{m\times n}\), \(y\in\mathbb{R}^m\),
+\[
+f(x) = \frac{1}{m}\|Ax-y\|_2^2.
+\]
+
+### Gradient and Hessian
+\[
+\nabla f(x) = \frac{2}{m}A^\top(Ax-y),
+\qquad
+\nabla^2 f(x) = \frac{2}{m}A^\top A.
+\]
+
+### Smoothness \(L\) and strong convexity \(\mu\)
+\[
+L = \lambda_{\max}\!\left(\frac{2}{m}A^\top A\right),\quad
+\mu = \lambda_{\min}\!\left(\frac{2}{m}A^\top A\right).
+\]
+
+### Exact line search (least squares)
+Along steepest descent direction \(d_k=-\nabla f(x_k)\),
+\[
+\alpha_k = \arg\min_{\alpha\ge 0} f(x_k+\alpha d_k).
+\]
+For least squares (quadratic), this has a closed form:
+\[
+\alpha_k = \frac{\|\nabla f(x_k)\|_2^2}{\nabla f(x_k)^\top \nabla^2 f \,\nabla f(x_k)},
+\qquad
+\nabla^2 f=\frac{2}{m}A^\top A.
+\]
+
+### Backtracking Armijo line search
+Starting from \(\alpha_0\), shrink \(\alpha \leftarrow \beta\alpha\) until:
+\[
+f(x_k + \alpha d_k) \le f(x_k) + c_1\alpha \nabla f(x_k)^\top d_k,
+\quad d_k=-\nabla f(x_k),
+\quad 0<c_1<1,\; 0<\beta<1.
+\]
 
 ---
 
 ## Results
+
+> Some filenames below are **placeholders** that may come from older notebooks/assignments and may not be produced by the current scripts unless you generate them (or rename outputs). They’re included anyway because you explicitly asked for all 15.
 
 ### Quadratic (2D)
 
@@ -140,3 +268,9 @@ The test suite includes:
 ## Citation
 
 If you use this repository as a reference, please cite via `CITATION.cff`.
+
+---
+
+## License
+
+MIT (see `CITATION.cff`).
