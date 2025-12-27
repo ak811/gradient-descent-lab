@@ -1,6 +1,6 @@
-# Gradient Descent Lab (Scientific Project Repo)
+# Gradient Descent Lab
 
-This repository is a modular, reproducible implementation of gradient-based optimization methods across three classic problem families:
+This repository is an implementation of gradient-based optimization methods across three classic problem families:
 
 - **2D quadratic** objective (smooth, strongly convex)  
 - **1D nonconvex** objective (multi-start behavior and local minima)  
