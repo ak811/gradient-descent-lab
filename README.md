@@ -14,8 +14,6 @@ It includes:
 - **Exact line search** for least squares
 - **Backtracking Armijo line search**
 
-All scripts generate deterministic plots saved into `Figures/`.
-
 ---
 
 ## Install
@@ -24,7 +22,7 @@ Create and activate a virtual environment, then install dependencies:
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
+source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
@@ -41,9 +39,6 @@ python scripts/make_all.py
 All plots are saved into:
 
 - `Figures/`
-
-> Note: The README embeds images by filename. If you already have images saved locally, keep the same names in `Figures/`.
-> The scripts are written to generate the same filenames so the gallery stays consistent.
 
 ---
 
